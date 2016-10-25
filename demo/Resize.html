@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8" />
+        <title>Table - ESUI Demo</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/google-code-prettify/prettify.css" />
+        <link rel="stylesheet" href="assets/themes/standard.css" />
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" href="assets/ie8.css" />
+        <![endif]-->
+        <style type="text/css">
+            .intro div {
+                height: 50px;
+            }
+            .ui-tab-item span {
+                color: #8e8989;
+            }
+            .ui-tab-item-active span {
+                color: #70ccc0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1 id="branding">ESUI - DataTable</h1>
+        </div>
+        <div class="ui-g main-container">
+            <div id="side-bar" class="ui-u-1-5">
+                <ul id="navigator" class="ui-nav">
+                </ul>
+            </div>
+            <div id="main" class="ui-u-4-5">
+                <h2>宽度</h2>
+                <div class="intro">
+                    <div>
+                        <button type="button" data-ui="id:resetWidth;type:Button;">设置宽度</button>
+                    </div>
+                </div>
+                <div class="example">
+                    <div
+                        data-ui="type:DataTable;id:table;columnResizable:true;variants:striped;select:multi;selectMode:box;sortable:true;"
+                        class="display"></div>
+                </div>
+                <script type="text/sample">
+                    // 设置宽度
+                    ui.get('resetWidth').on('click', function(e) {
+                        ui.get('table').setProperties({width: 600});
+                    });
+                </script>
+            </div>
+        </div>
+        <script src="assets/loader/esl.js"></script>
+        <script src="config.js"></script>
+        <script src="demo.js"></script>
+        <script src="assets/google-code-prettify/prettify.js"></script>
+        <script id="main-js">
+            var data = [
+                {
+                    id: 1,
+                    firstname: 'Airi',
+                    lastname: 'satou',
+                    position: 'Accountant',
+                    office: 'Tokyo',
+                    age: '33',
+                    start: '2008/09/26',
+                    salary: '$645,750',
+                    extn: '1042',
+                    email: 'j.bradshaw@datatables.net'
+                },
+                {
+                    id: 2,
+                    firstname: 'Charde',
+                    lastname: 'Marshall',
+                    position: 'Regional Director',
+                    office: 'San Francisco',
+                    age: '36',
+                    start: '2008/10/16',
+                    salary: '$470,600',
+                    extn: '6741',
+                    email: 'c.marshall@datatables.net'
+                },
+                {
+                    id: 3,
+                    firstname: 'Gavin',
+                    lastname: 'Cortez',
+                    position: 'Team Leader',
+                    office: 'San Francisco',
+                    age: '22',
+                    start: '2008/10/26',
+                    salary: '$235,500',
+                    extn: '2860',
+                    email: 'g.cortez@datatables.net'
+                },
+                {
+                    id: 4,
+                    firstname: 'Shad',
+                    lastname: 'Decker',
+                    position: 'Regional Director',
+                    office: 'Edinburgh',
+                    age: '51',
+                    start: '2008/11/13',
+                    salary: '$183,000',
+                    extn: '6373',
+                    email: 's.decker@datatables.net'
+                },
+                {
+                    id: 5,
+                    firstname: 'Jackson',
+                    lastname: 'Bradshaw',
+                    position: 'Director ',
+                    office: 'New York',
+                    age: '65',
+                    start: '2008/09/26',
+                    salary: '$645,750',
+                    extn: '7580',
+                    email: 'j.bradshaw@datatables.net'
+                }
+            ];
+            require(
+                [
+                    'esui',
+                    'esui/Dialog',
+                    'esui/Panel',
+                    'esui/SearchBox',
+                    'esui/Tab',
+                    'esui/extension/TableEdit',
+                    'esui/extension/Command',
+                    'esui/extension/AutoSort',
+                    'esui/extension/CustomData',
+                    'DataTable',
+                    'extension/TreeGrid',
+                    'extension/ColReorder',
+                    'extension/FixedColumns',
+                    'demo'
+                ],
+                function (ui) {
+                    var fields = [
+                        {
+                            title: 'ID',
+                            field: 'id' ,
+                            sortable: true,
+                            resizable: true,
+                            content: function (item) {
+                                return '<span>' + item.id + '</span>';
+                            }
+
+                        },
+                        {
+                            title: 'First name',
+                            field: 'firstname' ,
+                            sortable: true,
+                            resizable: true,
+                            width: 400,
+                            content: function (item) {
+                                return item.firstname;
+                            }
+                        },
+                        {
+                            title: 'Last name',
+                            field: 'lastname',
+                            sortable: true,
+                            content: function (item) {
+                                return item.lastname;
+                            }
+                        },
+                        {
+                            title: 'Position',
+                            field: 'position' ,
+                            content: function (item) {
+                                return item.position;
+                            }
+                        },
+                        {
+                            title: 'Office',
+                            field: 'office' ,
+                            content: function (item) {
+                                return item.office;
+                            }
+                        },
+                        {
+                            title: 'Age',
+                            field: 'age' ,
+                            content: function (item) {
+                                return item.age;
+                            }
+                        },
+                        {
+                            title: 'Start date',
+                            field: 'start' ,
+                            content: function (item) {
+                                return item.start;
+                            }
+                        },
+                        {
+                            title: 'Salary',
+                            field: 'salary' ,
+                            content: function (item) {
+                                return item.salary;
+                            }
+                        },
+                        {
+                            title: 'Extn.',
+                            field: 'extn' ,
+                            content: function (item) {
+                                return item.extn;
+                            }
+                        },
+                        {
+                            title: 'Email',
+                            field: 'email',
+                            width: 500,
+                            content: function (item) {
+                                return item.email;
+                            }
+                        }
+                    ];
+                    var newData = [];
+                    for (var i = 0; i !== 16; i++) {
+                        newData = newData.concat(data);
+                    }
+                    var tableProperties = {
+                        colReorder: true,
+                        clientPaging: true,
+                        scrollY: 300,
+                        scrollX: true,
+                        scrollCollapse: true,
+                        extendOptions: {
+                            fixedHeader: {
+                                header: true,
+                                footer: true
+                            }
+                        },
+                        datasource: newData,
+                        fields: fields,
+                    };
+                    ui.init(document.body,{
+                        properties : {
+                            table: tableProperties,
+                        }
+                    });
+                    // 设置宽度
+                    ui.get('resetWidth').on('click', function(e) {
+                        ui.get('table').setProperties({width: 600});
+                    });
+                }
+            );
+        </script>
+        <script src="sitemap.js"></script>
+    </body>
+</html>

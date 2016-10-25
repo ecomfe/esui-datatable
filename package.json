@@ -1,0 +1,41 @@
+{
+    "name": "datatable",
+    "version": "1.0.0-alpha.3",
+    "description": "edp project",
+    "main": "DataTable.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "edp": {
+        "wwwroot": "/",
+        "depDir": "dep",
+        "srcDir": "src",
+        "loaderAutoConfig": "js,htm,html,tpl,vm,phtml",
+        "loaderUrl": "http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js",
+        "dependencies": {
+            "eicons": "~1.0.0",
+            "eoo": "~0.1.4",
+            "esf": "~1.0.0",
+            "est": "~1.3.0",
+            "esui": "~3.2.0-beta.6",
+            "etpl": "~3.2.0",
+            "jquery": "~1.11.1",
+            "mini-event": "~1.0.2",
+            "moment": "~2.7.0",
+            "underscore": "~1.5.2",
+            "datatables-treegrid": "~1.0.0",
+            "datatables-select": "~1.2.0-rc.3",
+            "datatables-fixedcolumns": "~3.2.2-rc.1",
+            "datatables-colreorder": "~1.3.2-rc.2",
+            "datatables.net": "~1.10.12-rc.2"
+        }
+    },
+    "dependencies": {},
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ecomfe/esui-datatable.git"
+    },
+    "license": "BSD",
+    "readme": "README"
+}

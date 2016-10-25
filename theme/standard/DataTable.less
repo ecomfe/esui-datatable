@@ -1,0 +1,26 @@
+@import "../../src/css/DataTable.less";
+
+@esui-datatable-pager-text-color: @esui-palette-color;
+@esui-datatable-pager-length-background: #fff;
+@esui-datatable-body-selected-background: @esui-palette-neutral-highlight-color;
+@esui-datatable-row-hover-background: @esui-palette-light-bg-hightlight-color;
+
+.esui-datatable-head-theme() {
+    background: @esui-palette-neutral-color;
+}
+
+.esui-datatable-foot-theme() {
+    background: @esui-palette-neutral-color;
+}
+
+.esui-datatable-pager-length-theme() {
+    color: @esui-datatable-pager-text-color;
+    background: @esui-datatable-pager-length-background;
+}
+
+.esui-datatable-body-hover-theme() {
+    background-color: @esui-datatable-row-hover-background;
+}
+.esui-datatable-body-select-theme() {
+    background-color: @esui-datatable-body-selected-background;
+}

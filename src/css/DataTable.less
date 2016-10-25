@@ -1,0 +1,325 @@
+@esui-datatable-cell-text-padding: 1em;
+@esui-datatable-body-background: #fff;
+@esui-datatable-row-border-color: @esui-palette-border;
+@esui-datatable-row-border-style: solid;
+@esui-datatable-pager-padding-top: 0.25em;
+@esui-datatable-pager-length-padding: 0 0.5em;
+@esui-datatable-boody-child-padding: 0.5em 1em;
+@esui-datatable-pager-length-height: 1.5em;
+@esui-datatable-pager-button-margin: @esui-pager-item-margin;
+@esui-datatable-pager-button-padding: @esui-pager-item-padding;
+@esui-datatable-pager-button-minWidth: @esui-pager-item-min-width;
+
+
+/*
+ * Core
+ */
+.@{ui-class-prefix}-datatable table.dataTable {
+    width: 100%;
+    margin: 0 auto;
+    clear: both;
+    border-collapse: separate;
+    border-spacing: 0;
+    &,
+    th,
+    td {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+    th {
+        white-space: nowrap;
+    }
+}
+
+// fixedColumns
+.@{ui-class-prefix}-datatable.fixed-table table.dataTable {
+    table-layout: fixed;
+    td,th {
+        word-break: break-word;
+        white-space: normal;
+    }
+}
+
+
+.@{ui-class-prefix}-datatable table.dataTable thead {
+    .esui-datatable-head-theme();
+}
+
+.@{ui-class-prefix}-datatable table.dataTable .dataTables_empty {
+    text-align: center;
+}
+
+.@{ui-class-prefix}-datatable table.dataTable tfoot {
+    .esui-datatable-foot-theme();
+}
+
+.@{ui-class-prefix}-datatable table.dataTable thead th,
+.@{ui-class-prefix}-datatable table.dataTable thead td,
+.@{ui-class-prefix}-datatable table.dataTable tfoot th,
+.@{ui-class-prefix}-datatable table.dataTable tfoot td,
+.@{ui-class-prefix}-datatable table.dataTable tbody th,
+.@{ui-class-prefix}-datatable table.dataTable tbody td,
+table.fixedHeader-floating thead th,
+table.fixedHeader-floating thead td,
+table.fixedHeader-floating tfoot th,
+table.fixedHeader-floating tfoot td {
+    padding: @esui-datatable-cell-text-padding;
+}
+
+.@{ui-class-prefix}-datatable table.dataTable thead th:active,
+.@{ui-class-prefix}-datatable table.dataTable thead td:active {
+    outline: none;
+}
+
+.@{ui-class-prefix}-datatable table.dataTable thead th,
+.@{ui-class-prefix}-datatable table.dataTable thead td,
+.@{ui-class-prefix}-datatable table.dataTable tfoot th,
+.@{ui-class-prefix}-datatable table.dataTable tfoot td {
+    &.dt-head-left {
+        text-align: left;
+    }
+    &.dt-head-center {
+        text-align: center;
+    }
+    &.dt-head-right {
+        text-align: right;
+    }
+    &.dt-head-justify {
+        text-align: justify;
+    }
+}
+
+.@{ui-class-prefix}-datatable table.dataTable > tbody > tr.child {
+    padding: @esui-datatable-boody-child-padding;
+    &:hover {
+        background: transparent !important;
+    }
+}
+
+.@{ui-class-prefix}-datatable table.dataTable tbody th,
+.@{ui-class-prefix}-datatable table.dataTable tbody td {
+     &.dt-body-left {
+        text-align: left;
+    }
+    &.dt-body-center {
+        text-align: center;
+    }
+    &.dt-body-right {
+        text-align: right;
+    }
+    &.dt-body-justify {
+        text-align: justify;
+    }
+}
+
+.@{ui-class-prefix}-datatable table.dataTable thead {
+    .sorting {
+        cursor: pointer;
+        &:hover {
+            .esui-table-head-sortable-cell-hover-theme();
+        }
+    }
+    .sorting_asc .ui-table-hsort:before {
+        content: "\f0de";
+    }
+    .sorting_desc .ui-table-hsort:before {
+        content: "\f0dd";
+    }
+}
+
+.@{ui-class-prefix}-datatable table.dataTable tbody tr {
+    background-color: @esui-datatable-body-background;
+    &:hover {
+        .esui-datatable-body-hover-theme();
+    }
+}
+
+.@{ui-class-prefix}-datatable table.dataTable.display tbody th,
+.@{ui-class-prefix}-datatable table.dataTable.display tbody td {
+    border-bottom: 1px @esui-datatable-row-border-style @esui-datatable-row-border-color;
+}
+
+
+/*
+ * Wrapper
+ */
+.@{ui-class-prefix}-datatable .dataTables_wrapper {
+    position: relative;
+    clear: both;
+    *zoom: 1;
+    zoom: 1;
+    margin: 0 auto;
+    &:after {
+        visibility: hidden;
+        display: block;
+        content: "";
+        clear: both;
+        height: 0;
+    }
+}
+
+/*
+ * Pager
+ */
+.@{ui-class-prefix}-datatable .dataTables_wrapper .dataTables_length {
+    float: right;
+    display: inline-block;
+    padding-top: @esui-datatable-pager-padding-top;
+}
+
+.@{ui-class-prefix}-datatable .dataTables_wrapper .dataTables_length label {
+    display: inline-block;
+    .esui-pager-label-theme()
+}
+
+.@{ui-class-prefix}-datatable .dataTables_wrapper .dataTables_length select {
+    border: none;
+    outline: none;
+    padding: @esui-datatable-pager-length-padding;
+    height: @esui-datatable-pager-length-height;
+    line-height: @esui-datatable-pager-length-height;
+    .esui-datatable-pager-length-theme();
+}
+
+.@{ui-class-prefix}-datatable .dataTables_wrapper .dataTables_paginate {
+    float: right;
+    text-align: right;
+    padding-top: @esui-datatable-pager-padding-top;
+    .paginate_button {
+        .esui-pager-item-theme();
+        margin-left: @esui-datatable-pager-button-margin;
+        padding: @esui-datatable-pager-button-padding;
+        min-width: @esui-datatable-pager-button-minWidth;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .paginate_button.next,
+    .paginate_button.previous {
+        .esui-pager-item-extend-theme();
+    }
+    .paginate_button.current {
+        .esui-pager-item-current-theme();
+    }
+    .paginate_button.disabled {
+        display: none;
+    }
+}
+
+
+
+/*
+ * Scroll
+ */
+.@{ui-class-prefix}-datatable .dataTables_wrapper .dataTables_scroll {
+    clear: both;
+}
+.@{ui-class-prefix}-datatable .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+    *margin-top: -1px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.@{ui-class-prefix}-datatable .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody th,
+.@{ui-class-prefix}-datatable .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody td {
+    vertical-align: middle;
+    div.dataTables_sizing {
+        height: 0;
+        overflow: hidden;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+
+/*
+ * fixedHeader
+ */
+table.fixedHeader-floating {
+  position: fixed !important;
+  .esui-datatable-head-theme();
+}
+
+table.fixedHeader-floating.no-footer {
+  border-bottom-width: 0;
+}
+
+table.fixedHeader-locked {
+  position: absolute !important;
+  .esui-datatable-head-theme();
+}
+
+/*
+ * Select
+ */
+
+.@{ui-class-prefix}-datatable table.dataTable tbody > tr.selected,
+.@{ui-class-prefix}-datatable table.dataTable tbody > tr > .selected {
+    .esui-datatable-body-select-theme();
+}
+
+// TODO: 这一坨要想个办法解决掉
+table.dataTable.stripe tbody > tr.odd.selected,
+table.dataTable.stripe tbody > tr.odd > .selected, table.dataTable.display tbody > tr.odd.selected,
+table.dataTable.display tbody > tr.odd > .selected {
+    background-color: @esui-palette-neutral-highlight-color;
+}
+table.dataTable tr.selected td.ui-datatable-select-column .ui-datatable-selector-indicator > label:before,
+table.dataTable tr.selected th.select-checkbox .ui-checkbox-custom > label:before {
+    background: @esui-palette-primary-color;
+    border-color: @esui-palette-primary-color;
+}
+table.dataTable tr.selected td.ui-datatable-select-column .ui-checkbox-custom > label:after,
+table.dataTable tr.selected th.select-checkbox .ui-checkbox-custom > label:after {
+    position: absolute;
+    top: 0.245em;
+    left: 0.15em;
+    width: 0.7em;
+    height: 0.4em;
+    border: 0.2em solid #fff;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+table.dataTable tr.selected td.ui-datatable-select-column .ui-radio-custom > label:after {
+    top: 0;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    background-color: #ffffff;
+    -webkit-border-radius: 500em;
+    -moz-border-radius: 500em;
+    border-radius: 500em;
+    border: 0.3em solid #70ccc0;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+}
+
+/*
+ * fixedColumns
+ */
+.@{ui-class-prefix}-datatable table.DTFC_Cloned thead,
+.@{ui-class-prefix}-datatable table.DTFC_Cloned tfoot,
+.@{ui-class-prefix}-datatable div.DTFC_Blocker {
+    .esui-datatable-head-theme();
+}
+
+.@{ui-class-prefix}-datatable div.DTFC_LeftWrapper table.dataTable,
+.@{ui-class-prefix}-datatable div.DTFC_RightWrapper table.dataTable {
+    margin-bottom: 0;
+    z-index: 2;
+}
+.@{ui-class-prefix}-datatable div.DTFC_LeftWrapper table.dataTable.no-footer,
+.@{ui-class-prefix}-datatable div.DTFC_RightWrapper table.dataTable.no-footer {
+  border-bottom: none;
+}
+
