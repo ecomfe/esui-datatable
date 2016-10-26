@@ -1,0 +1,22 @@
+{
+  "name": "datatables-fixedcolumns",
+  "version": "3.2.2-rc.1",
+  "description": "fixedColumns extension for datatables",
+  "main": "js/dataTables.fixedColumns.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DAN-FE/FixedColumns.git"
+  },
+  "keywords": [
+    "FixedColumns",
+    "datatables"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DAN-FE/FixedColumns/issues"
+  },
+  "homepage": "https://github.com/DAN-FE/FixedColumns"
+}

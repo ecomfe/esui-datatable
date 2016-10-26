@@ -1,0 +1,14 @@
+{
+    "demo\\test-defineMembers.html": "a6351e9208a9416b5358349b4274b4d9",
+    "package.json": "e3b2ea212a2333815538826c950399b0",
+    "demo\\index.html": "575822680871c03eddf3226be9c82e3a",
+    "LICENSE": "d466e2325ee60ace4f73f2fec651c171",
+    "README.md": "a953525e14115dced4708af112ae7952",
+    "src\\defineAccessor.js": "7ea18564be96999119a953b1cc2ea0ca",
+    "src\\main.js": "e9dedcc81417e1422485aaf483fbc56d",
+    "test\\karma.conf.js": "4ecce251747d92c22fe0ebd0c0cb9cc6",
+    "src\\oo.js": "2ab2f0f28ae3b2ce5db747b81dc9d746",
+    "test\\spec\\ooSpec.js": "872e790ddff2bd140efe5fdd8b2a9238",
+    "bower.json": "e00f5657c5e19729797faa224c1c9853",
+    "test\\test-main.js": "6bf9baa975863bd1a928ab1ea3598a4f"
+}

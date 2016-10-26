@@ -1,0 +1,22 @@
+{
+  "name": "datatables-select",
+  "version": "1.2.0-rc.3",
+  "description": "select extension for datatables",
+  "main": "js/dataTables.select.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DAN-FE/Select.git"
+  },
+  "keywords": [
+    "Select",
+    "datatables"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DAN-FE/Select/issues"
+  },
+  "homepage": "https://github.com/DAN-FE/Select"
+}

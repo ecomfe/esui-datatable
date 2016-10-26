@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>dep-jquery</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-8/esl.js"></script>
+    <script>
+    require.config({
+      baseUrl: '.',
+      packages: [
+        {
+          name: 'jquery',
+          location: '../src',
+          main: 'jquery'
+        }
+      ]
+    });
+    </script>
+  </head>
+  <body>
+  <div id="ok"></div>
+  <script>
+  require(['jquery'], function ($) {
+    $('#ok').html('PASS').css('color', 'green');
+  });
+  </script>
+  </body>
+  </html>

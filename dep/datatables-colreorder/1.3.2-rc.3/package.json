@@ -1,0 +1,22 @@
+{
+  "name": "datatables-colreorder",
+  "version": "1.3.2-rc.3",
+  "description": "colReorder extension for datatables",
+  "main": "js/dataTables.colReorder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DAN-FE/ColReorder.git"
+  },
+  "keywords": [
+    "ColReorder",
+    "datatables"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DAN-FE/ColReorder/issues"
+  },
+  "homepage": "https://github.com/DAN-FE/ColReorder"
+}
