@@ -932,8 +932,15 @@ define(
          * @param {Object} field field的配置
          * @return {string} class name
          */
-        function getFieldHeaderClass(field) {
-            return 'dt-head-' + (field.align || 'left');
+        function getFieldHeaderClass(className) {
+            if (className instanceof Array) {
+                return u.map(className, function(item) {
+                    return 'dt-head-' + item;
+                }).join(' ');
+            }
+            else {
+                return 'dt-head-' + className;
+            }
         }
 
         /**
@@ -971,15 +978,21 @@ define(
                 html.push('<th rowspan="2" class="treeGrid-control"></th>');
             }
             fields = fields || table.fields;
-            u.each(fields, function (field) {
+            u.each(fields, function (field, fieldIndex) {
+                var headClass = '';
                 if (!field.children) {
-                    html.push('<th rowspan="2" class="' + getFieldHeaderClass(field)
+                    headClass += getFieldHeaderClass([field.align || 'left', 'complex']);
+                    html.push('<th rowspan="2" class="' + headClass
                         + '" data-field-id="' + field.field + '">' + createHeadTitle(field) + '</th>');
                 }
                 else {
-                    html.push('<th colspan="' + field.children.length + '">' + createHeadTitle(field) + '</th>');
-                    u.each(field.children, function (child) {
-                        subHtml.push('<th class="' + getFieldHeaderClass(child)
+                    headClass += getFieldHeaderClass('complex');
+                    html.push('<th colspan="' + field.children.length + '" class="' + headClass + '">' + createHeadTitle(field) + '</th>');
+                    u.each(field.children, function (child, childIndex) {
+                        var isLast = (fieldIndex === fields.length - 1) && (childIndex === field.children.length - 1);
+                        var align = child.align || 'left';
+                        headClass += ' ' + getFieldHeaderClass(isLast ? [align, 'last'] : align)
+                        subHtml.push('<th class="' + headClass
                             + '" data-field-id="' + child.field + '">' + createHeadTitle(child) + '</th>');
                     });
                 }
@@ -1014,7 +1027,8 @@ define(
             }
             fields = fields || table.fields;
             u.each(fields, function (field) {
-                html.push('<th rowspan="1" class="' + getFieldHeaderClass(field)
+                var headClass = getFieldHeaderClass(field.align || 'left');
+                html.push('<th rowspan="1" class="' + headClass
                         + '" data-field-id="' + field.field + '">' + createHeadTitle(field) + '</th>');
             });
             html.push('</tr>');
