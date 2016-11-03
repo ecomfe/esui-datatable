@@ -7603,6 +7603,14 @@ table.dataTable tr.selected td.ui-datatable-select-column .ui-radio-custom > lab
 .ui-datatable div.DTFC_RightWrapper table.dataTable.no-footer {
   border-bottom: none;
 }
+table.dataTable.dt-head-complex th {
+  border-right: 1px solid #EBEBEB;
+  border-top: 1px solid #EBEBEB;
+}
+table.dataTable.dt-head-complex tr:first-child th:last-child,
+table.dataTable.dt-head-complex .dt-head-last {
+  border-right: 0;
+}
 .header {
   height: 60px;
   background: #2C3E50;

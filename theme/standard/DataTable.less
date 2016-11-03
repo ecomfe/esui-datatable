@@ -35,3 +35,13 @@
 .esui-datatable-body-select-theme() {
     background-color: @esui-datatable-body-selected-background;
 }
+
+.esui-datatable-head-complex-theme() {
+    th {
+        border-right: @esui-datatable-head-complex-border;
+        border-top: @esui-datatable-head-complex-border;
+    }
+    tr:first-child th:last-child, .dt-head-last {
+        border-right: 0;
+    }
+}
