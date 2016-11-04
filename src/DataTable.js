@@ -487,7 +487,9 @@ define(
                             var headHTML = isComplexHead ? withComplexHeadHTML(table, fields)
                                             : simpleHeadHTML(table, fields);
                             var footHTML = createFooterHTML(table, foot);
-                            var cNode = $.parseHTML('<table class="display dtr-inline" cellspacing="0" width="100%">'
+                            var tableClass = 'display dtr-inline';
+                            tableClass += isComplexHead ? ' dt-head-complex' : '';
+                            var cNode = $.parseHTML('<table class="' + tableClass + '" cellspacing="0" width="100%">'
                                         + headHTML + footHTML + '<tbody></tbody></table>');
                             $(cNode).appendTo(table.main);
                             var dataTable = table.initDataTable(cNode, table, datasource, fields);
@@ -971,15 +973,17 @@ define(
                 html.push('<th rowspan="2" class="treeGrid-control"></th>');
             }
             fields = fields || table.fields;
-            u.each(fields, function (field) {
+            u.each(fields, function (field, fieldIndex) {
                 if (!field.children) {
                     html.push('<th rowspan="2" class="' + getFieldHeaderClass(field)
                         + '" data-field-id="' + field.field + '">' + createHeadTitle(field) + '</th>');
                 }
                 else {
                     html.push('<th colspan="' + field.children.length + '">' + createHeadTitle(field) + '</th>');
-                    u.each(field.children, function (child) {
-                        subHtml.push('<th class="' + getFieldHeaderClass(child)
+                    u.each(field.children, function (child, childIndex) {
+                        var isLast = (fieldIndex === fields.length - 1) && (childIndex === field.children.length - 1);
+                        var subHeadClass = getFieldHeaderClass(child) + (isLast ? ' dt-head-last' : '');
+                        subHtml.push('<th class="' + subHeadClass
                             + '" data-field-id="' + child.field + '">' + createHeadTitle(child) + '</th>');
                     });
                 }
