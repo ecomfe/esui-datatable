@@ -716,7 +716,11 @@ define(
             var actualFields = analysizeFields(fields).fields;
             u.each(actualFields, function (field) {
                 var column = {
-                    data: field.content,
+                    data: (u.isFunction(field.content)
+                        ? function (row, type, set, meta) {
+                            return field.content(row, meta.row);
+                        }
+                        : field.content),
                     targets: index++
                 };
                 if (field.width) {
