@@ -10,110 +10,21 @@
 @esui-datatable-pager-button-padding: @esui-pager-item-padding;
 @esui-datatable-pager-button-minWidth: @esui-pager-item-min-width;
 
-
 /*
  * Core
  */
-.@{ui-class-prefix}-datatable table.dataTable {
+.@{ui-class-prefix}-datatable .dataTable {
     width: 100%;
-    margin: 0 auto;
-    clear: both;
     border-collapse: separate;
     border-spacing: 0;
-    &,
-    th,
-    td {
-        -webkit-box-sizing: content-box;
-        -moz-box-sizing: content-box;
-        box-sizing: content-box;
-    }
+}
+
+.@{ui-class-prefix}-datatable .dataTable thead {
+    // 默认header是不换行
     th {
         white-space: nowrap;
     }
-}
-
-// fixedColumns
-.@{ui-class-prefix}-datatable.fixed-table table.dataTable {
-    table-layout: fixed;
-    td,th {
-        word-break: break-word;
-        white-space: normal;
-    }
-}
-
-
-.@{ui-class-prefix}-datatable table.dataTable thead {
-    .esui-datatable-head-theme();
-}
-
-.@{ui-class-prefix}-datatable table.dataTable .dataTables_empty {
-    text-align: center;
-}
-
-.@{ui-class-prefix}-datatable table.dataTable tfoot {
-    .esui-datatable-foot-theme();
-}
-
-.@{ui-class-prefix}-datatable table.dataTable thead th,
-.@{ui-class-prefix}-datatable table.dataTable thead td,
-.@{ui-class-prefix}-datatable table.dataTable tfoot th,
-.@{ui-class-prefix}-datatable table.dataTable tfoot td,
-.@{ui-class-prefix}-datatable table.dataTable tbody th,
-.@{ui-class-prefix}-datatable table.dataTable tbody td,
-table.fixedHeader-floating thead th,
-table.fixedHeader-floating thead td,
-table.fixedHeader-floating tfoot th,
-table.fixedHeader-floating tfoot td {
-    padding: @esui-datatable-cell-text-padding;
-}
-
-.@{ui-class-prefix}-datatable table.dataTable thead th:active,
-.@{ui-class-prefix}-datatable table.dataTable thead td:active {
-    outline: none;
-}
-
-.@{ui-class-prefix}-datatable table.dataTable thead th,
-.@{ui-class-prefix}-datatable table.dataTable thead td,
-.@{ui-class-prefix}-datatable table.dataTable tfoot th,
-.@{ui-class-prefix}-datatable table.dataTable tfoot td {
-    &.dt-head-left {
-        text-align: left;
-    }
-    &.dt-head-center {
-        text-align: center;
-    }
-    &.dt-head-right {
-        text-align: right;
-    }
-    &.dt-head-justify {
-        text-align: justify;
-    }
-}
-
-.@{ui-class-prefix}-datatable table.dataTable > tbody > tr.child {
-    padding: @esui-datatable-boody-child-padding;
-    &:hover {
-        background: transparent !important;
-    }
-}
-
-.@{ui-class-prefix}-datatable table.dataTable tbody th,
-.@{ui-class-prefix}-datatable table.dataTable tbody td {
-     &.dt-body-left {
-        text-align: left;
-    }
-    &.dt-body-center {
-        text-align: center;
-    }
-    &.dt-body-right {
-        text-align: right;
-    }
-    &.dt-body-justify {
-        text-align: justify;
-    }
-}
-
-.@{ui-class-prefix}-datatable table.dataTable thead {
+    // 排序图标
     .sorting {
         cursor: pointer;
         &:hover {
@@ -121,23 +32,61 @@ table.fixedHeader-floating tfoot td {
         }
     }
     .sorting_asc .ui-table-hsort:before {
-        content: "\f0de";
+        .eicons-icon-content(sort-asc);
     }
     .sorting_desc .ui-table-hsort:before {
-        content: "\f0dd";
+        .eicons-icon-content(sort-desc);
+    }
+    .esui-datatable-head-theme();
+}
+
+.@{ui-class-prefix}-datatable .dataTable .dataTables_empty {
+    text-align: center;
+}
+
+.@{ui-class-prefix}-datatable .dataTable tfoot {
+    .esui-datatable-foot-theme();
+}
+
+.@{ui-class-prefix}-datatable .dataTable th,
+.@{ui-class-prefix}-datatable .dataTable td {
+    padding: @esui-datatable-cell-text-padding;
+    border-bottom: 1px @esui-datatable-row-border-style @esui-datatable-row-border-color;
+}
+
+.@{ui-class-prefix}-datatable {
+    .dt-align-left {
+        text-align: left;
+    }
+    .dt-align-center {
+        text-align: center;
+    }
+    .dt-align-right {
+        text-align: right;
+    }
+    .dt-align-justify {
+        text-align: justify;
+    }
+    .dt-text-nowrap {
+        white-space: nowrap;
+    }
+    .dt-text-normal {
+        white-space: normal;
     }
 }
 
-.@{ui-class-prefix}-datatable table.dataTable tbody tr {
+.@{ui-class-prefix}-datatable .dataTable tbody tr {
     background-color: @esui-datatable-body-background;
     &:hover {
         .esui-datatable-body-hover-theme();
     }
 }
 
-.@{ui-class-prefix}-datatable table.dataTable.display tbody th,
-.@{ui-class-prefix}-datatable table.dataTable.display tbody td {
-    border-bottom: 1px @esui-datatable-row-border-style @esui-datatable-row-border-color;
+.@{ui-class-prefix}-datatable .dataTable > tbody > tr.child {
+    padding: @esui-datatable-boody-child-padding;
+    &:hover {
+        background: transparent !important;
+    }
 }
 
 
@@ -209,7 +158,6 @@ table.fixedHeader-floating tfoot td {
 }
 
 
-
 /*
  * Scroll
  */
@@ -232,24 +180,6 @@ table.fixedHeader-floating tfoot td {
     }
 }
 
-
-/*
- * fixedHeader
- */
-table.fixedHeader-floating {
-  position: fixed !important;
-  .esui-datatable-head-theme();
-}
-
-table.fixedHeader-floating.no-footer {
-  border-bottom-width: 0;
-}
-
-table.fixedHeader-locked {
-  position: absolute !important;
-  .esui-datatable-head-theme();
-}
-
 /*
  * Select
  */
@@ -261,7 +191,8 @@ table.fixedHeader-locked {
 
 // TODO: 这一坨要想个办法解决掉
 table.dataTable.stripe tbody > tr.odd.selected,
-table.dataTable.stripe tbody > tr.odd > .selected, table.dataTable.display tbody > tr.odd.selected,
+table.dataTable.stripe tbody > tr.odd > .selected,
+table.dataTable.display tbody > tr.odd.selected,
 table.dataTable.display tbody > tr.odd > .selected {
     background-color: @esui-palette-neutral-highlight-color;
 }
@@ -324,7 +255,7 @@ table.dataTable tr.selected td.ui-datatable-select-column .ui-radio-custom > lab
 }
 
 // complex head
-table.dataTable.dt-head-complex {
+.dataTable.dt-head-complex {
     .esui-datatable-head-complex-theme();
 }
 .esui-datatable-head-complex-theme() {}

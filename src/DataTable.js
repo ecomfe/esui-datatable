@@ -7,6 +7,7 @@
  * @author chuzhenyang(chuzhenyang@baidu.com)
  *         hongfeng(hongfeng@baidu.com)
  */
+
 define(
     function (require) {
         var u = require('underscore');
@@ -360,9 +361,6 @@ define(
                  * @public
                  */
                 initDataTable: function (cNode, table, datasource, fields) {
-                    if (!table.autoWidth) {
-                        $(table.main).addClass('fixed-table');
-                    }
                     var options = {
                         dom: 'rtipl',
                         data: datasource,
@@ -388,6 +386,7 @@ define(
                         columnDefs: getColumnDefs(table, fields)
                     };
                     options = u.extend(options, table.extendOptions, table.getDataTableExtendOptions());
+
                     return $(cNode).DataTable(options);
                 },
 
@@ -716,11 +715,7 @@ define(
             var actualFields = analysizeFields(fields).fields;
             u.each(actualFields, function (field) {
                 var column = {
-                    data: (u.isFunction(field.content)
-                        ? function (row, type, set, meta) {
-                            return field.content(row, meta.row);
-                        }
-                        : field.content),
+                    data: field.content,
                     targets: index++
                 };
                 if (field.width) {
@@ -771,7 +766,10 @@ define(
                     return field.field === fieldId;
                 });
                 if (fieldConfig) {
-                    var alignClass = 'dt-body-' + (fieldConfig.align || 'left');
+                    var alignClass = 'dt-align-' + (fieldConfig.align || 'left');
+                    if (fieldConfig.wrap) {
+                        alignClass += ' dt-text-' + fieldConfig.wrap;
+                    }
                     $(table.dataTable.column(index).nodes()).addClass(alignClass);
                 }
             });
@@ -939,7 +937,7 @@ define(
          * @return {string} class name
          */
         function getFieldHeaderClass(field) {
-            return 'dt-head-' + (field.align || 'left');
+            return 'dt-align-' + (field.align || 'left');
         }
 
         /**
@@ -1048,33 +1046,20 @@ define(
             if (!(table.select === 'multi' || table.select === 'single')) {
                 foot.unshift({});
             }
-            foot = foot.slice(0, actualFields.length + 1);
-            var lostLen = actualFields.length - foot.length;
-            for (var i = 0; i <= lostLen; i++) {
-                foot.push({});
-            }
             var html = '<tfoot><tr>';
-            var rows = [];
-            var subEntry = table.subEntry;
-            var treeGrid = table.treeGrid;
-            if (subEntry) {
-                rows.push('<th rowspan="1" class="details-control"></th>');
-            }
-            if (treeGrid) {
-                rows.push('<th rowspan="1" class="treegrid-control"></th>');
-            }
+            var tds = [];
             u.each(foot, function (item) {
                 var content = item.content || '';
                 if (typeof item.content === 'function') {
                     content = item.content();
                 }
 
-                rows.push('<th class="' + 'dt-head-' + (item.align || 'left')
-                            + '" colspan=' + (item.colspan || 1) + '>'
+                tds.push('<td class="' + 'dt-align-' + (item.align || 'left')
+                            + '" colspan="' + (item.colspan || 1) + '">'
                             + content
-                            + '</th>');
+                            + '</td>');
             });
-            return html + rows.join('') + '</tr></tfoot>';
+            return html + tds.join('') + '</tr></tfoot>';
         }
 
         /**
