@@ -825,7 +825,7 @@ define(
             $(dataTable.column(0).header()).removeClass('select-checkbox');
             $(dataTable.column(0).header()).find('.ui-checkbox-custom').remove();
 
-            operationColumn.addClass(selectColumnClass + ' dt-body-center');
+            operationColumn.addClass(selectColumnClass + ' dt-align-center');
 
             if (!select) {
                 select = 'api';
@@ -1044,6 +1044,12 @@ define(
 
             var actualFields = analysizeFields(table.fields).fields;
             if (!(table.select === 'multi' || table.select === 'single')) {
+                foot.unshift({});
+            }
+            if (table.subEntry) {
+                foot.unshift({});
+            }
+            if (table.treeGrid) {
                 foot.unshift({});
             }
             var html = '<tfoot><tr>';
